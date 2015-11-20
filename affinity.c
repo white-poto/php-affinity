@@ -160,11 +160,12 @@ PHP_FUNCTION(setaffinity)
 	long cpu_id = 0;
 
 	if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "l", &cpu_id) == FAILURE) {
-        RETURN_FALSE;
+        RETURN_NULL();
     }
 
 	int num = sysconf(_SC_NPROCESSORS_CONF);
 	if(cpu_id > num){
+		php_error_docref(NULL TSRMLS_CC, E_WARNING, "cpu_id more than the total number of CPU");
 		RETURN_FALSE;
 	}
 
@@ -175,8 +176,29 @@ PHP_FUNCTION(setaffinity)
 	if(sched_setaffinity(0, sizeof(mask), &mask) == -1){
 		RETURN_FALSE;
 	}
+
 	RETURN_TRUE;
 }
+
+PHP_FUNCTION(getaffinity)
+{
+	int num = sysconf(_SC_NPROCESSORS_CONF);
+	cpu_set_t get;
+	CPU_ZERO(&get);
+
+	if(sched_getaffinity(0, sizeof(get), &get) == -1){
+		RETURN_FALSE;
+	}
+
+	for(long i=0; i<num; i++){
+		if(CPU_ISSET(i, &get)){
+			RETURN_LONG(i);
+		}
+	}
+
+	RETURN_FALSE;
+}
+
 
 
 /* Remove the following function when you have successfully modified config.m4
