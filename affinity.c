@@ -169,7 +169,7 @@ PHP_FUNCTION(setaffinity)
 	cpu_set_t mask;
 	CPU_ZERO(&mask);
     CPU_SET(cpu_id, &mask);
-
+    RETURN_TRUE;
 
 	if(sched_setaffinity(0, sizeof(mask), &mask) == -1){
 		RETURN_FALSE;
