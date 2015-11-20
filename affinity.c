@@ -190,7 +190,7 @@ PHP_FUNCTION(getaffinity)
 		RETURN_FALSE;
 	}
 
-	for(long i=0; i<num; i++){
+	for(int i=0; i<num; i++){
 		if(CPU_ISSET(i, &get)){
 			RETURN_LONG(i);
 		}
