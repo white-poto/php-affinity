@@ -52,6 +52,7 @@ static int le_affinity;
 const zend_function_entry affinity_functions[] = {
 	PHP_FE(confirm_affinity_compiled,	NULL)		/* For testing, remove later. */
 	PHP_FE(setaffinity,	NULL)		/* For testing, remove later. */
+	PHP_FE(getaffinity,	NULL)		/* For testing, remove later. */
 	PHP_FE_END	/* Must be the last line in affinity_functions[] */
 };
 /* }}} */
