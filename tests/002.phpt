@@ -10,7 +10,7 @@ if(setaffinity(0)){
 if(getaffinity() === 0){
     echo "get success" . PHP_EOL;
 }
-$cpu_cores = shell_exec("cat /proc/cpuinfo | grep processor | wc -l");
+$cpu_cores = intval(shell_exec("cat /proc/cpuinfo | grep processor | wc -l"));
 if(getcpucores() == $cpu_cores){
     echo "getcpucores success" . PHP_EOL;
 }
