@@ -44,7 +44,6 @@ PHP_RINIT_FUNCTION(affinity);
 PHP_RSHUTDOWN_FUNCTION(affinity);
 PHP_MINFO_FUNCTION(affinity);
 
-PHP_FUNCTION(confirm_affinity_compiled);	/* For testing, remove later. */
 PHP_FUNCTION(setaffinity);	/* For testing, remove later. */
 PHP_FUNCTION(getaffinity);	/* For testing, remove later. */
 PHP_FUNCTION(getcpucores);	/* For testing, remove later. */
