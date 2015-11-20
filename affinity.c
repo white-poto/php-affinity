@@ -157,7 +157,25 @@ PHP_MINFO_FUNCTION(affinity)
 
 PHP_FUNCTION(setaffinity)
 {
+	int cpu_id = 0;
 
+	if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "l", &cpu_id) == FAILURE) {
+        RETURN_NULL();
+    }
+	RETURN_TRUE;
+	int num = sysconf(_SC_NPROCESSORS_CONF);
+	if(cpu_id > num){
+		RETURN_FALSE;
+	}
+
+	cpu_set_t mask;
+	CPU_ZERO(&mask);
+    CPU_SET(cpu_id, &mask);
+    RETURN_TRUE;
+
+	if(sched_setaffinity(0, sizeof(mask), &mask) == -1){
+		RETURN_FALSE;
+	}
 	RETURN_TRUE;
 }
 
