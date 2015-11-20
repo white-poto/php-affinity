@@ -9,6 +9,14 @@ affinity provides three functions:
 + setaffinity change the process to another CPU
 + getcpucores get number of CPU cores
 
+Install
+---------------------
+tar zxvf affinity.tar.gz
+cd affinity
+phpize
+./configure --with-php-config=/path/to/php-config
+make && make test && make install
+
 API
 ---------------------
 ```php
