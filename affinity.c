@@ -161,6 +161,7 @@ PHP_FUNCTION(setaffinity)
 	if(zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "|l", &cpu_id) == FAILURE){
 		RETURN_FALSE;
 	}
+	RETURN_TRUE;
 	int num = sysconf(_SC_NPROCESSORS_CONF);
 	if(cpu_id > num){
 		RETURN_FALSE;
