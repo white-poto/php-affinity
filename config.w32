@@ -1,0 +1,13 @@
+// $Id$
+// vim:ft=javascript
+
+// If your extension references something external, use ARG_WITH
+// ARG_WITH("affinity", "for affinity support", "no");
+
+// Otherwise, use ARG_ENABLE
+// ARG_ENABLE("affinity", "enable affinity support", "no");
+
+if (PHP_AFFINITY != "no") {
+	EXTENSION("affinity", "affinity.c");
+}
+
