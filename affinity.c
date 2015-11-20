@@ -171,7 +171,7 @@ PHP_FUNCTION(setaffinity)
     }
 
 	int num = sysconf(_SC_NPROCESSORS_CONF);
-	if(cpu_id > num){
+	if(cpu_id >= num){
 		php_error_docref(NULL TSRMLS_CC, E_WARNING, "cpu_id more than the total number of CPU");
 		RETURN_FALSE;
 	}
