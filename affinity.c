@@ -53,6 +53,7 @@ const zend_function_entry affinity_functions[] = {
 	PHP_FE(confirm_affinity_compiled,	NULL)		/* For testing, remove later. */
 	PHP_FE(setaffinity,	NULL)		/* For testing, remove later. */
 	PHP_FE(getaffinity,	NULL)		/* For testing, remove later. */
+	PHP_FE(getcpucores,	NULL)		/* For testing, remove later. */
 	PHP_FE_END	/* Must be the last line in affinity_functions[] */
 };
 /* }}} */
@@ -155,6 +156,11 @@ PHP_MINFO_FUNCTION(affinity)
 	*/
 }
 /* }}} */
+
+PHP_FUNCTION(getcpucores){
+	int num = sysconf(_SC_NPROCESSORS_CONF);
+	RETURN_LONG(num);
+}
 
 PHP_FUNCTION(setaffinity)
 {

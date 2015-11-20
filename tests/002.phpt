@@ -7,10 +7,15 @@ Check for affinity presence
 if(setaffinity(0)){
     echo "set success" . PHP_EOL;
 }
-if(getaffinity()){
+if(getaffinity() === 0){
     echo "get success" . PHP_EOL;
+}
+$cpu_cores = shell_exec("cat /proc/cpuinfo | grep processor | wc -l");
+if(getcpucores() == $cpu_cores){
+    echo "getcpucores success" . PHP_EOL;
 }
 ?>
 --EXPECT--
 set success
 get success
+getcpucores succes
