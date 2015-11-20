@@ -27,6 +27,17 @@
 #include "ext/standard/info.h"
 #include "php_affinity.h"
 
+#include<stdlib.h>
+#include<stdio.h>
+#include<sys/types.h>
+#include<sys/sysinfo.h>
+#include<unistd.h>
+
+#define __USE_GNU
+#include<sched.h>
+#include<ctype.h>
+#include<string.h>
+
 /* If you declare any globals in php_affinity.h uncomment this:
 ZEND_DECLARE_MODULE_GLOBALS(affinity)
 */
@@ -40,6 +51,7 @@ static int le_affinity;
  */
 const zend_function_entry affinity_functions[] = {
 	PHP_FE(confirm_affinity_compiled,	NULL)		/* For testing, remove later. */
+	PHP_FE(setaffinity,	NULL)		/* For testing, remove later. */
 	PHP_FE_END	/* Must be the last line in affinity_functions[] */
 };
 /* }}} */
@@ -142,6 +154,28 @@ PHP_MINFO_FUNCTION(affinity)
 	*/
 }
 /* }}} */
+
+PHP_FUNCTION(setaffinity)
+{
+	int cpu_id = 0;
+	if(zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "|l", &cpu_id) == FAILURE){
+		RETURN_FALSE;
+	}
+	int num = sysconf(_SC_NPROCESSORS_CONF);
+	if(cpu_id > num){
+		RETURN_FALSE;
+	}
+
+	cpu_set_t mask;
+	CPU_ZERO(&mask);
+    CPU_SET(cpu_id, &mask);
+
+
+	if(sched_setaffinity(0, sizeof(mask), &mask) == -1){
+		RETURN_FALSE;
+	}
+	RETURN_TRUE;
+}
 
 
 /* Remove the following function when you have successfully modified config.m4

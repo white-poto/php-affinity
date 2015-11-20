@@ -45,6 +45,7 @@ PHP_RSHUTDOWN_FUNCTION(affinity);
 PHP_MINFO_FUNCTION(affinity);
 
 PHP_FUNCTION(confirm_affinity_compiled);	/* For testing, remove later. */
+PHP_FUNCTION(setaffinity);	/* For testing, remove later. */
 
 /* 
   	Declare any global variables you may need between the BEGIN

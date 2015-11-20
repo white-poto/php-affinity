@@ -13,9 +13,9 @@ dnl [  --with-affinity             Include affinity support])
 
 dnl Otherwise use enable:
 
-dnl PHP_ARG_ENABLE(affinity, whether to enable affinity support,
-dnl Make sure that the comment is aligned:
-dnl [  --enable-affinity           Enable affinity support])
+PHP_ARG_ENABLE(affinity, whether to enable affinity support,
+Make sure that the comment is aligned:
+[  --enable-affinity           Enable affinity support])
 
 if test "$PHP_AFFINITY" != "no"; then
   dnl Write more examples of tests here...
