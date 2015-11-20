@@ -189,8 +189,8 @@ PHP_FUNCTION(getaffinity)
 	if(sched_getaffinity(0, sizeof(get), &get) == -1){
 		RETURN_FALSE;
 	}
-
-	for(int i=0; i<num; i++){
+	int i;
+	for(i=0; i<num; i++){
 		if(CPU_ISSET(i, &get)){
 			RETURN_LONG(i);
 		}
