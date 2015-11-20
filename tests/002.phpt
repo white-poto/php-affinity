@@ -18,4 +18,4 @@ if(getcpucores() == $cpu_cores){
 --EXPECT--
 set success
 get success
-getcpucores succes
+getcpucores success
