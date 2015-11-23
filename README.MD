@@ -11,11 +11,13 @@ affinity provides three functions:
 
 Install
 ---------------------
+```shell
 tar zxvf affinity.tar.gz
 cd affinity
 phpize
 ./configure --with-php-config=/path/to/php-config
 make && make test && make install
+```
 
 API
 ---------------------
