@@ -1,10 +1,10 @@
 php-affinity
 ==================
-php extension which provide functions to modify CPU affinity
+A PHP extension which provides functions to modify CPU affinity
 
 Introduce
 ------------------
-affinity provides three functions:
+Affinity extension provides three functions:
 + getaffinity get CPU number which current process is running in.
 + setaffinity change the process to another CPU
 + getcpucores get number of CPU cores
