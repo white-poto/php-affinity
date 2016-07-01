@@ -11,7 +11,6 @@ Affinity extension provides three functions:
 
 simple-fork-php framework
 -------------------------
-This is [](http://example.com/ "Title") inline link.
 [simple-fork-php](https://github.com/huyanping/simple-fork-php "simple-fork-php") 
 is A multi-processes management framework. 
 Its interfaces are like `Thread` and `Runnable` in java.
