@@ -9,10 +9,19 @@ Affinity extension provides three functions:
 + setaffinity change the process to another CPU
 + getcpucores get number of CPU cores
 
+simple-fork-php framework
+-------------------------
+This is [](http://example.com/ "Title") inline link.
+[simple-fork-php](https://github.com/huyanping/simple-fork-php "simple-fork-php") 
+is A multi-processes management framework. 
+Its interfaces are like `Thread` and `Runnable` in java.
+It is useful for someone who wants to write multi-processes programs.
+
 Install
 ---------------------
 ```shell
-tar zxvf affinity.tar.gz
+wget https://github.com/huyanping/php-affinity/archive/0.1.tar.gz
+tar zxvf 0.1.tar.gz
 cd affinity
 phpize
 ./configure --with-php-config=/path/to/php-config
